@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "Pedido")
+@Table(name = "Telefone")
 
 @Setter
 @Getter
@@ -16,24 +16,18 @@ import java.time.LocalDateTime;
 @NoArgsConstructor //Construtor sem parâmetros (padrão)
 @AllArgsConstructor //Construtor com todos parâmetros
 @Builder //Forma otimizada para criação de objetos
-public class Pedido {
+public class Telefone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private Long id;
     @Column(length = 10, nullable = false)
-    private String valorPedido;
-    @Column(nullable = false)
-    private LocalDateTime dataHoraPedido;
-    @Column(nullable = true)
-    private LocalDateTime dataHoraEntrega;
-    @Column(columnDefinition = "DECIMAL(5, 2)", nullable = false)
-    private BigDecimal valorTotal;
-    @Column(nullable = false)
-    private String status;
+    private String ddd;
+    @Column(length = 20, nullable = false)
+    private String numero;
     @Column(nullable = false)
     private boolean codStatus;
-    // Relacionamento "Associação"
+
     @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
     private Usuario usuarioId;

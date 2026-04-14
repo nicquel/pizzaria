@@ -2,9 +2,7 @@ package com.itb.inf3cn.wff.model.entity;
 
 import jakarta.persistence.*;
 import com.itb.inf3cn.wff.model.enums.TipoUsuario;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 
@@ -13,6 +11,9 @@ import lombok.Setter;
 @Setter
 @Getter
 @DiscriminatorValue("CLIENTE")
+
+@NoArgsConstructor //Construtor sem parâmetros (padrão)
+@AllArgsConstructor //Construtor com todos parâmetros
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 public class Cliente {

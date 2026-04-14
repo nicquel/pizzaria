@@ -2,16 +2,16 @@ package com.itb.inf3cn.wff.model.entity;
 
 import com.itb.inf3cn.wff.model.enums.TipoUsuario;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Setter
 @Getter
-@DiscriminatorValue("FUNCIONARIO")
+@DiscriminatorValue("Funcionario")
+@NoArgsConstructor //Construtor sem parâmetros (padrão)
+@AllArgsConstructor //Construtor com todos parâmetros
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 
 public class Funcionario {

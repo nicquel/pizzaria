@@ -2,15 +2,15 @@ package com.itb.inf3cn.wff.model.entity;
 
 import jakarta.persistence.*;
 import com.itb.inf3cn.wff.model.enums.TipoUsuario;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @DiscriminatorValue("ADMIN")
 @Setter
 @Getter
 @EqualsAndHashCode
+@NoArgsConstructor //Construtor sem parâmetros (padrão)
+@AllArgsConstructor //Construtor com todos parâmetros
 
 public class Admin  {
 

@@ -2,19 +2,18 @@ package com.itb.inf3cn.wff.model.entity;
 
 import com.itb.inf3cn.wff.model.enums.TipoUsuario;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "Usuario")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue("USUARIO")
-@DiscriminatorColumn(name = "tipo_usuario", discriminatorType = DiscriminatorType.STRING)
 @Setter // Atribui informação ao atributo
 @Getter // Recupera a informação
+@NoArgsConstructor //Construtor sem parâmetros (padrão)
+@AllArgsConstructor //Construtor com todos parâmetros
+@Builder //Forma otimizada para criação de objetos
 @EqualsAndHashCode(onlyExplicitlyIncluded = true) // Otimizar a busca dentro de coleções e evitar duplicidade de objetos
 public class Usuario {
 
@@ -29,24 +28,19 @@ public class Usuario {
     @Column(length = 45, nullable = false)
     private String email;
     @Column(length = 255, nullable = false)
-    private String password;
+    private String senha;
     @Column(length = 15, nullable = false)
     private String sexo;
-    @Column(nullable = true)
-    private LocalDate dataNascimento;
     @Column(length = 100, nullable = true)
     private String logradouro;
-    @Column(length = 10, nullable = true)
+    @Column(length = 100, nullable = true)
     private String cep;
     @Column(length = 45, nullable = true)
     private String bairro;
     @Column(length = 45, nullable = true)
     private String cidade;
+    private boolean codStatus;
     @Column(length = 2, nullable = true)
     private String uf;
-    private boolean codStatus;
 
-    @Enumerated(EnumType.STRING)
-    @Column(length = 20, name = "tipo_usuario", insertable = false, updatable = false)
-    private TipoUsuario tipoUsuario;
 }
